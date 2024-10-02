@@ -44,49 +44,39 @@ namespace Fruit_Clicker
             Comprar(sender, ref I.segundoSkin, I, pnlSkin);
         }
         private void Comprar(object sender, ref int up, object local, Panel painel)
-        {
-            Button btnSkin = (Button)sender;
-            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
-            PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
-            Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
+    {
+        Button btnSkin = (Button)sender;
+        string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
+        PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
+        Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
 
-            int.TryParse(btnSkin.Text, out int preco);
-            int clique = int.Parse(lblSkin.Text.Substring(1));
+        int.TryParse(btnSkin.Text, out int preco);
+        int clique = int.Parse(lblSkin.Text.Substring(1));
 
+        if (btnSkin.Text == "Selecionado" || I.ponto >= preco)
+        {
             foreach (Button item in painel.Controls.OfType<Button>())
             {
-                if (item.Text == "Selecionado")
-                {
-                    item.Enabled = true;
-                    item.Text = "Selecionar";
-                }
+                //if (item.Text == "Selecionado")
+                item.Enabled = true;
+                item.Text = "Selecionar";
             }
-            if (btnSkin.Text == "Selecionar")
-            {
-                up = clique;
-                if (local is PictureBox)
-                {
-                    (local as PictureBox).Image = pbSkin.Image;
-                }
-                else { (local as Index).BackgroundImage = pbSkin.Image; }
-                btnSkin.Text = "Selecionado";
-                btnSkin.Enabled = false;
-                SalvarBotoes();
-            }
-            else if (I.ponto >= preco)
+        }
+
+        if (btnSkin.Text == "Selecionar" || I.ponto >= preco)
+        {
+            if (btnSkin.Text != "Selecionar")
             {
                 I.ponto -= preco;
-                up = clique;
                 I.lblPonto.Text = I.ponto.ToString();
-                if (local is PictureBox)
-                {
-                    (local as PictureBox).Image = pbSkin.Image;
-                }
-                else { (local as Index).BackgroundImage = pbSkin.Image; }
-                btnSkin.Text = "Selecionado";
-                btnSkin.Enabled = false;
-                SalvarBotoes();
             }
+            up = clique;
+            if (local is PictureBox pb) { pb.Image = pbSkin.Image; }
+            else if (local is Index index) { index.BackgroundImage = pbSkin.Image; }
+            btnSkin.Text = "Selecionado";
+            btnSkin.Enabled = false;
+            SalvarBotoes();
+        }
             else { new Aviso().ShowDialog(); }
         }
         private void SalvarBotoes()
