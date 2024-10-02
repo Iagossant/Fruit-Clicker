@@ -13,12 +13,12 @@ namespace Fruit_Clicker
     public partial class Loja : Form
     {
         Index I;
-        List<Button> btnList = new List<Button>();
+        List<Button> btnList;
         public Loja(Index index)
         {
             InitializeComponent();
             I = index;
-            btnList.AddRange(new Button[] { btnSkin1, btnSkin2, btnSkin3, btnSkin4, btnSkin5, btnSkin6, btnSkin7, btnSkin8 });
+            btnList = new List<Button> { btnSkin1, btnSkin2, btnSkin3, btnSkin4, btnSkin5, btnSkin6, btnSkin7, btnSkin8 };
             AtualizarBotoes();
         }
         private void AtualizarBotoes()
@@ -31,8 +31,7 @@ namespace Fruit_Clicker
                 for (int i = 0; i < btnList.Count; i++)
                 {
                     btnList[i].Text = texto[i];
-                    bool boleano = bool.Parse(estado[i]);
-                    btnList[i].Enabled = boleano;
+                    btnList[i].Enabled = bool.Parse(estado[i]);;
                 }
             }
         }
@@ -45,9 +44,7 @@ namespace Fruit_Clicker
             Comprar(sender, ref I.segundoSkin, I, pnlSkin);
         }
         private void Comprar(object sender, ref int up, object local, Panel painel)
-        {
-            Aviso av = new Aviso();
-
+        {
             Button btnSkin = (Button)sender;
             string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
             PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
@@ -90,7 +87,7 @@ namespace Fruit_Clicker
                 btnSkin.Enabled = false;
                 SalvarBotoes();
             }
-            else { av.ShowDialog(); }
+            else { new Aviso().ShowDialog(); }
         }
         private void SalvarBotoes()
         {
