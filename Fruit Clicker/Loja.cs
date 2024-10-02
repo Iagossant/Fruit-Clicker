@@ -43,7 +43,7 @@ namespace Fruit_Clicker
         {
             Comprar(sender, ref I.segundoSkin, I, pnlSkin);
         }
-        private void Comprar(object sender, ref int up, object local, Panel painel)
+    private void Comprar(object sender, ref int up, object local, Panel painel)
     {
         Button btnSkin = (Button)sender;
         string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
@@ -53,11 +53,10 @@ namespace Fruit_Clicker
         int.TryParse(btnSkin.Text, out int preco);
         int clique = int.Parse(lblSkin.Text.Substring(1));
 
-        if (btnSkin.Text == "Selecionado" || I.ponto >= preco)
+        foreach (Button item in painel.Controls.OfType<Button>())
         {
-            foreach (Button item in painel.Controls.OfType<Button>())
+            if (item.Text == "Selecionado" && I.ponto >= preco)
             {
-                //if (item.Text == "Selecionado")
                 item.Enabled = true;
                 item.Text = "Selecionar";
             }
@@ -77,8 +76,8 @@ namespace Fruit_Clicker
             btnSkin.Enabled = false;
             SalvarBotoes();
         }
-            else { new Aviso().ShowDialog(); }
-        }
+        else { new Aviso().ShowDialog(); }
+    }
         private void SalvarBotoes()
         {
             List<string> texto = new List<string>();
