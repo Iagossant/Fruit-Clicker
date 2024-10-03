@@ -42,14 +42,14 @@ namespace Fruit_Clicker
 
         private void ClickSkin_Click(object sender, EventArgs e)
         {
-            Button btnSkin = (Button)sender;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, I.pbFruit, pnlSkin, this, I);
+            Button button = (Button)sender;
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, button, I.pbFruit, pnlSkin, this, I);
         }
 
         private void SecondSkin_Click(object sender, EventArgs e)
         {
-            Button btnSkin = (Button)sender;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, I, pnlSkin, this, I);
+            Button button = (Button)sender;
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, button, I, pnlSkin, this, I);
         }
 
         private void pbFechar_Click(object sender, EventArgs e)
