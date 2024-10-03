@@ -30,42 +30,31 @@ namespace Fruit_Clicker
             ponto += segundoUp + segundoSkin;
             lblPonto.Text = ponto.ToString();
         }
-        private void btnUp_Click(object sender, EventArgs e)
+        private void Interface_Click()
+    {
+        Button btn = (Button)sender;
+        string Painel = "pnl" + btn.Name.Substring(3);
+        Panel pnl = this.Controls.Find(Painel, true).FirstOrDefault() as Panel;
+        Abrir_Fechar(pnl, btn, btn.Text);
+    }
+
+    private void Abrir_Fechar(Panel pnl, Button btn, string btnName)
+    {
+        if (btn.Text == "Fechar")
         {
-            Button btn = (Button)sender;
-            if (btn.Text == "Upgrade")
-            {
-                btn.Text = "Close";
-                pnlUp.Location = new Point(255, 133);
-                pnlUp.Enabled = true;
-                pnlUp.Visible = true;
-            }
-            else
-            {
-                btn.Text = "Upgrade";
-                pnlUp.Enabled = false;
-                pnlUp.Visible = false;
-                pnlUp.Location = new Point(0, 0);
-            }
+            btn.Text = btnName;
+            pnl.Enabled = false;
+            pnl.Visible = false;
+            pnl.Location = new Point(0, 0);
         }
-        private void btnLoja_Click(object sender, EventArgs e)
+        else
         {
-            Button btn = (Button)sender;
-            if (btn.Text == "Loja")
-            {
-                btn.Text = "Close";
-                pnlLoja.Location = new Point(255, 133);
-                pnlLoja.Enabled = true;
-                pnlLoja.Visible = true;
-            }
-            else
-            {
-                btn.Text = "Loja";
-                pnlLoja.Enabled = false;
-                pnlLoja.Visible = false;
-                pnlLoja.Location = new Point(0, 0);
-            }
+            btn.Text = "Fechar";
+            pnl.Location = new Point(255, 133);
+            pnl.Enabled = true;
+            pnl.Visible = true;
         }
+    }
         private void btnConquista_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -92,7 +81,6 @@ namespace Fruit_Clicker
         }
         private void Upgrade(object sender, ref int ponto, ref int lvl, ref int Up)
         {
-            Aviso av = new Aviso();
             Button btnUp = (Button)sender;
             int preco = int.Parse(btnUp.Text);
             if (ponto >= preco)
@@ -105,7 +93,7 @@ namespace Fruit_Clicker
                 btnUp.Text = preco.ToString();
                 //inc.lblUp.Text = lvl.ToString();
             }
-            else { av.ShowDialog(); }
+            else { new Aviso().ShowDialog(); }
         }
         private void Index_FormClosed(object sender, FormClosedEventArgs e)
         {
