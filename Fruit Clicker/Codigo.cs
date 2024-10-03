@@ -9,7 +9,7 @@ namespace Fruit_Clicker
 {
     public class Codigo
     {
-        public void Comprar(ref int up, ref int ponto, Button btnSkin, PictureBox pbSkin, Label lblSkin, object local, Panel painel, Loja loja, Index index)
+        public void Comprar(ref int up, ref int ponto, Button btnSkin, PictureBox pbSkin, Label lblSkin, object local, Panel painel, Loja loja, Index inicio)
         {
             int.TryParse(btnSkin.Text, out int preco);
             int clique = int.Parse(lblSkin.Text.Substring(1));
@@ -28,6 +28,7 @@ namespace Fruit_Clicker
                 if (btnSkin.Text != "Selecionar")
                 {
                     ponto -= preco;
+                    inicio.lblPonto.Text = ponto.ToString();
                 }
                 up = clique;
                 if (local is PictureBox pb) { pb.Image = pbSkin.Image; }
@@ -42,7 +43,7 @@ namespace Fruit_Clicker
             }
         }
 
-        public void Upgrade(ref int ponto, ref int lvl, ref int Up, Button btnUp)
+        public void Upgrade(ref int ponto, ref int lvl, ref int Up, Button btnUp, Index inicio)
         {
             int preco = int.Parse(btnUp.Text);
             if (ponto >= preco)
@@ -52,6 +53,7 @@ namespace Fruit_Clicker
                 Up++;
                 lvl++;
                 btnUp.Text = preco.ToString();
+                inicio.lblPonto.Text = ponto.ToString();
             }
             else
             {
