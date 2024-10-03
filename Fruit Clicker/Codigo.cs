@@ -9,7 +9,7 @@ namespace Fruit_Clicker
 {
     public class Codigo
     {
-        public void Comprar(ref int up, ref int ponto, Button btnSkin, PictureBox pbSkin, Label lblSkin, object local, Panel painel)
+        public void Comprar(ref int up, ref int ponto, Button btnSkin, PictureBox pbSkin, Label lblSkin, object local, Panel painel, Loja loja, Index index)
         {
             int.TryParse(btnSkin.Text, out int preco);
             int clique = int.Parse(lblSkin.Text.Substring(1));
