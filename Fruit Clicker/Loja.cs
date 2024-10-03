@@ -42,16 +42,22 @@ namespace Fruit_Clicker
 
         private void ClickSkin_Click(object sender, EventArgs e)
         {
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, I.pbFruit, pnlSkin);
+            Button btnSkin = (Button)sender;
+            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
+            PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
+            Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I.pbFruit, pnlSkin);
             I.lblPonto.Text = I.ponto.ToString();
-            SalvarBotoes();
         }
 
         private void SecondSkin_Click(object sender, EventArgs e)
         {
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, I, pnlSkin);
+            Button btnSkin = (Button)sender;
+            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
+            PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
+            Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I, pnlSkin);
             I.lblPonto.Text = I.ponto.ToString();
-            SalvarBotoes();
         }
 
         private void pbFechar_Click(object sender, EventArgs e)
@@ -65,7 +71,7 @@ namespace Fruit_Clicker
             pnlSkin.Visible = false;
         }
 
-        private void SalvarBotoes()
+        public void SalvarBotoes()
         {
             List<string> texto = new List<string>();
             List<string> estado = new List<string>();
