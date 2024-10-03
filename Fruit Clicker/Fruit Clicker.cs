@@ -48,14 +48,12 @@ namespace Fruit_Clicker
         {
             Button btnUp = (Button)sender;
             codigo.Upgrade(ref ponto, ref clickLvl, ref cliqueUp, btnUp);
-            lblPonto.Text = ponto.ToString();
         }
 
         private void btnUpgradeTimer_Click(object sender, EventArgs e)
         {
             Button btnUp = (Button)sender;
             codigo.Upgrade(ref ponto, ref segundoLvl, ref segundoUp, btnUp);
-            lblPonto.Text = ponto.ToString();
         }
 
         private void Index_FormClosed(object sender, FormClosedEventArgs e)
