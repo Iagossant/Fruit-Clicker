@@ -46,7 +46,7 @@ namespace Fruit_Clicker
             string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
             PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
             Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I.pbFruit, pnlSkin);
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I.pbFruit, pnlSkin), this, I;
             I.lblPonto.Text = I.ponto.ToString();
         }
 
@@ -56,7 +56,7 @@ namespace Fruit_Clicker
             string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
             PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
             Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I, pnlSkin);
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I, pnlSkin, this, I);
             I.lblPonto.Text = I.ponto.ToString();
         }
 
