@@ -43,21 +43,13 @@ namespace Fruit_Clicker
         private void ClickSkin_Click(object sender, EventArgs e)
         {
             Button btnSkin = (Button)sender;
-            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
-            PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
-            Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I.pbFruit, pnlSkin), this, I;
-            I.lblPonto.Text = I.ponto.ToString();
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, I.pbFruit, pnlSkin, this, I);
         }
 
         private void SecondSkin_Click(object sender, EventArgs e)
         {
             Button btnSkin = (Button)sender;
-            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
-            PictureBox pbSkin = this.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
-            Label lblSkin = this.Controls.Find(Label, true).FirstOrDefault() as Label;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, pbSkin, lblSkin, I, pnlSkin, this, I);
-            I.lblPonto.Text = I.ponto.ToString();
+            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, btnSkin, I, pnlSkin, this, I);
         }
 
         private void pbFechar_Click(object sender, EventArgs e)
