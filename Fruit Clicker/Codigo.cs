@@ -9,79 +9,71 @@ namespace Fruit_Clicker
 {
     public class Codigo
     {
-        /*Index inc;
-        Loja lj;
-        Aviso av;
-        public List<Button> clkSkin = new List<Button>();
-        public List<Button> sgSkin = new List<Button>();
+        public void Comprar(ref int up, ref int ponto, Button btnSkin, PictureBox pbSkin, Label lblSkin, object local, Panel painel)
+        {
+            int.TryParse(btnSkin.Text, out int preco);
+            int clique = int.Parse(lblSkin.Text.Substring(1));
 
-        public Codigo()
-        {
+            foreach (Button item in painel.Controls.OfType<Button>())
+            {
+                if (item.Text == "Selecionado" && ponto >= preco)
+                {
+                    item.Enabled = true;
+                    item.Text = "Selecionar";
+                }
+            }
 
+            if (btnSkin.Text == "Selecionar" || ponto >= preco)
+            {
+                if (btnSkin.Text != "Selecionar")
+                {
+                    ponto -= preco;
+                }
+                up = clique;
+                if (local is PictureBox pb) { pb.Image = pbSkin.Image; }
+                else if (local is Index index) { index.BackgroundImage = pbSkin.Image; }
+                btnSkin.Text = "Selecionado";
+                btnSkin.Enabled = false;
+            }
+            else
+            {
+                new Aviso().ShowDialog();
+            }
         }
-        public Codigo(Index index)
+
+        public void Upgrade(ref int ponto, ref int lvl, ref int Up, Button btnUp)
         {
-            inc = index;
-        }
-        public Codigo(Loja loja)
-        {
-            lj = loja;
-        }
-        /*public void Upgrade(object sender, ref int ponto, ref int lvl, ref int Up)
-        {
-            Button btnUp = (Button)sender;
-            int preco = int.Parse(inc.btnUp.Text);
+            int preco = int.Parse(btnUp.Text);
             if (ponto >= preco)
             {
                 ponto -= preco;
                 preco *= 2;
                 Up++;
                 lvl++;
-                inc.btnUp.Text = preco.ToString();
-                inc.lblUp.Text = lvl.ToString();
-           }
+                btnUp.Text = preco.ToString();
+            }
+            else
+            {
+                new Aviso().ShowDialog();
+            }
         }
-        public void Comprar(object sender, ref int ponto, ref int Up, object local)
+
+        public void Abrir_Fechar(Panel pnl, Button btn, string btnName)
         {
-            Button btnSkin = (Button)sender;
-            string Box = "pictureBox" + btnSkin.Name.Last(), Label = "label" + btnSkin.Name.Last();
-            PictureBox pbSkin = lj.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
-            Label lblSkin = lj.Controls.Find(Label, true).FirstOrDefault() as Label;
-            int preco = int.Parse(btnSkin.Text);
-            int upgrade = int.Parse(lblSkin.Text.Substring(1));
-
-            foreach (Button item in listSkin)
+            if (btn.Text == "Fechar")
             {
-                item.Text = "Selecionar";
-                item.Enabled = true;
+                btn.Text = btnName;
+                pnl.Enabled = false;
+                pnl.Visible = false;
+                pnl.Location = new Point(0, 0);
             }
-
-            if (btnSkin.Tag == "Comprado")
+            else
             {
-                Up = upgrade;
-                if (local is PictureBox)
-                {
-                    (local as PictureBox).Image = pbSkin.Image;
-                }
-                else { (local as Index).BackgroundImage = pbSkin.Image; }
-                btnSkin.Text = "Selecionado";
-                btnSkin.Enabled = false;
+                btn.Text = "Fechar";
+                pnl.Location = new Point(255, 133);
+                pnl.Enabled = true;
+                pnl.Visible = true;
             }
-            else if (ponto >= preco)
-            {
-                ponto -= preco;
-                Up = upgrade;
-                inc.lblPonto.Text = ponto.ToString();
-                if (local is PictureBox)
-                {
-                    (local as PictureBox).Image = pbSkin.Image;
-                }
-                else { (local as Index).BackgroundImage = pbSkin.Image; }
-                btnSkin.Text = "Selecionado";
-                btnSkin.Tag = "Comprado";
-                btnSkin.Enabled = false;
-                //listSkin.Add(btnSkin);
-            }
-        }*/
+        }
     }
 }
