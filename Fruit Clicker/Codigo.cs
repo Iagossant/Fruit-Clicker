@@ -9,8 +9,12 @@ namespace Fruit_Clicker
 {
     public class Codigo
     {
-        public void Comprar(ref int up, ref int ponto, Button btnSkin, PictureBox pbSkin, Label lblSkin, object local, Panel painel, Loja loja, Index inicio)
+        public void Comprar(ref int up, ref int ponto, Button btnSkin, object local, Panel painel, Loja loja, Index inicio)
         {
+            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
+            PictureBox pbSkin = loja.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
+            Label lblSkin = loja.Controls.Find(Label, true).FirstOrDefault() as Label;
+            
             int.TryParse(btnSkin.Text, out int preco);
             int clique = int.Parse(lblSkin.Text.Substring(1));
 
