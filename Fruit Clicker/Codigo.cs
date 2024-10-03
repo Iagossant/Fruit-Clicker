@@ -9,18 +9,14 @@ namespace Fruit_Clicker
 {
     public class Codigo
     {
-        public void Comprar(ref int up, ref int ponto, Button btnSkin, object local, Panel painel)
+        public void Comprar(ref int up, ref int ponto, Button btnSkin, PictureBox pbSkin, Label lblSkin, object local, Panel painel)
         {
-            Button btnSkin = (Button)sender;
-            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
-            PictureBox pbSkin = Loja.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
-            Label lblSkin = Loja.Controls.Find(Label, true).FirstOrDefault() as Label;
             int.TryParse(btnSkin.Text, out int preco);
             int clique = int.Parse(lblSkin.Text.Substring(1));
 
-            foreach (Button item in Loja.painel.Controls.OfType<Button>())
+            foreach (Button item in loja.painel.Controls.OfType<Button>())
             {
-                if (item.Text == "Selecionado" && ponto >= preco)
+                if (item.Text == "Selecionado")
                 {
                     item.Enabled = true;
                     item.Text = "Selecionar";
@@ -38,6 +34,7 @@ namespace Fruit_Clicker
                 else if (local is Index index) { index.BackgroundImage = pbSkin.Image; }
                 btnSkin.Text = "Selecionado";
                 btnSkin.Enabled = false;
+                loja.SalvarBotoes();
             }
             else
             {
