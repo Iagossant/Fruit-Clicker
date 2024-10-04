@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,21 +10,31 @@ namespace Fruit_Clicker
 {
     public class Codigo
     {
-        public void Comprar(ref int up, ref int ponto, Button btnSkin, object local, Panel painel, Loja loja, Index inicio)
+        Index inicio;
+        Loja loja;
+        public Codigo(Index i, Loja lj)
+        {
+            inicio = i;
+            loja = lj;
+        }
+        public void Comprar(Button btnSkin, Panel painel, object local, ref int up, ref int ponto)
         {
             string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
             PictureBox pbSkin = loja.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
             Label lblSkin = loja.Controls.Find(Label, true).FirstOrDefault() as Label;
-            
+
             int.TryParse(btnSkin.Text, out int preco);
             int clique = int.Parse(lblSkin.Text.Substring(1));
 
-            foreach (Button item in loja.painel.Controls.OfType<Button>())
+            if (btnSkin.Text == "Selecionar" || ponto >= preco)
             {
-                if (item.Text == "Selecionado")
+                foreach (Button item in painel.Controls.OfType<Button>())
                 {
-                    item.Enabled = true;
-                    item.Text = "Selecionar";
+                    if (item.Text == "Selecionado")
+                    {
+                        item.Enabled = true;
+                        item.Text = "Selecionar";
+                    }
                 }
             }
 
@@ -46,17 +57,20 @@ namespace Fruit_Clicker
                 new Aviso().ShowDialog();
             }
         }
-
-        public void Upgrade(ref int ponto, ref int lvl, ref int Up, Button btnUp, Index inicio)
+        public void Upgrade(Button btnUp, ref int ponto, ref int lvl, ref int Up)
         {
-            int preco = int.Parse(btnUp.Text);
+            string Preco = "lblPreco" + btnUp.Name.Last(), Level = "lblLevel" + btnUp.Name.Last();
+            Label lblPreco = inicio.Controls.Find(Preco, true).FirstOrDefault() as Label;
+            Label lblLevel = inicio.Controls.Find(Level, true).FirstOrDefault() as Label;
+            int preco = int.Parse(lblPreco.Text);
             if (ponto >= preco)
             {
                 ponto -= preco;
                 preco *= 2;
                 Up++;
                 lvl++;
-                btnUp.Text = preco.ToString();
+                lblPreco. Text = preco.ToString();
+                lblLevel.Text = $"Level {lvl}";
                 inicio.lblPonto.Text = ponto.ToString();
             }
             else
@@ -64,7 +78,6 @@ namespace Fruit_Clicker
                 new Aviso().ShowDialog();
             }
         }
-
         public void Abrir_Fechar(Panel pnl, Button btn, string btnName)
         {
             if (btn.Text == "Fechar")

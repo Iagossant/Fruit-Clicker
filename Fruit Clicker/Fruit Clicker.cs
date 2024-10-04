@@ -13,49 +13,52 @@ namespace Fruit_Clicker
     public partial class Index : Form
     {
         public int ponto = 0, cliqueUp = 10000, cliqueSkin, segundoUp, segundoSkin, clickLvl, segundoLvl;
-        Loja lj;
+        Loja loja;
         Codigo codigo;
-
         public Index()
         {
             InitializeComponent();
-            lj = new Loja(this);
-            codigo = new Codigo();
+            loja = new Loja(this);
+            codigo = new Codigo(this, loja);
             timer.Start();
         }
-
+        private void btnSkin_Click(object sender, EventArgs e)
+        {
+            loja.pnlSkin.Visible = loja.pnlSkin.Enabled = true;
+            loja.Show();
+        }
+        private void btnBackground_Click(object sender, EventArgs e)
+        {
+            loja.pnlSkin.Visible = loja.pnlSkin.Enabled = true;
+            loja.Show();
+        }
         private void pbFruit_Click(object sender, EventArgs e)
         {
             ponto += cliqueUp + cliqueSkin;
             lblPonto.Text = ponto.ToString();
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             ponto += segundoUp + segundoSkin;
             lblPonto.Text = ponto.ToString();
         }
-
-        private void Interface_Click()
+        private void Interface_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             string Painel = "pnl" + btn.Name.Substring(3);
             Panel pnl = this.Controls.Find(Painel, true).FirstOrDefault() as Panel;
-            codigo.Abrir_Fechar(pnl, btn, btn.Text);
+            codigo.Abrir_Fechar(pnl, btn, btn.Tag);
         }
-
         private void btnUpgradeClick_Click(object sender, EventArgs e)
         {
             Button btnUp = (Button)sender;
-            codigo.Upgrade(ref ponto, ref clickLvl, ref cliqueUp, btnUp);
+            codigo.Upgrade(btnUp, ref ponto, ref clickLvl, ref cliqueUp);
         }
-
         private void btnUpgradeTimer_Click(object sender, EventArgs e)
         {
             Button btnUp = (Button)sender;
-            codigo.Upgrade(ref ponto, ref segundoLvl, ref segundoUp, btnUp);
+            codigo.Upgrade(btnUp, ref ponto, ref segundoLvl, ref segundoUp);
         }
-
         private void Index_FormClosed(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Conquistas = null;

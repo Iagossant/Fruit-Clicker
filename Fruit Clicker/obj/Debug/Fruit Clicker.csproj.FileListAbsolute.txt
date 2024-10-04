@@ -11,3 +11,16 @@
 \\INFO\Informática\Turma 09\Iago\Jogos - Iago\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit Clicker.pdb
 \\INFO\Informática\Turma 09\Iago\Jogos - Iago\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit_Clicker.Aviso.resources
 \\INFO\Informática\Turma 09\Iago\Jogos - Iago\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit_Clicker.Conquista.resources
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit Clicker.csproj.AssemblyReference.cache
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit_Clicker.Aviso.resources
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit_Clicker.Conquista.resources
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit_Clicker.Index.resources
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit_Clicker.Loja.resources
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit_Clicker.Properties.Resources.resources
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit Clicker.csproj.GenerateResource.cache
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit Clicker.csproj.CoreCompileInputs.cache
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit Clicker.exe
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\obj\Debug\Fruit Clicker.pdb
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\bin\Debug\Fruit Clicker.exe.config
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\bin\Debug\Fruit Clicker.exe
+C:\Users\Estudantes\Desktop\Fruit Clicker\Fruit Clicker\bin\Debug\Fruit Clicker.pdb

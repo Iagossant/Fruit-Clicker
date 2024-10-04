@@ -15,16 +15,14 @@ namespace Fruit_Clicker
         Index I;
         List<Button> btnList;
         Codigo codigo;
-
         public Loja(Index index)
         {
             InitializeComponent();
             I = index;
-            codigo = new Codigo();
-            btnList = new List<Button> { btnSkin1, btnSkin2, btnSkin3, btnSkin4, btnSkin5, btnSkin6, btnSkin7, btnSkin8 };
+            codigo = new Codigo(I, this);
+            btnList = new List<Button> { btnSkin1, btnSkin2, btnSkin3, btnSkin4, btnSkin5, btnSkin4, btnSkin7, btnSkin8 };
             AtualizarBotoes();
         }
-
         private void AtualizarBotoes()
         {
             string[] texto = (!string.IsNullOrEmpty(Properties.Settings.Default.btnText)) ? Properties.Settings.Default.btnText.Split(';') : new string[0];
@@ -39,30 +37,26 @@ namespace Fruit_Clicker
                 }
             }
         }
-
         private void ClickSkin_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, button, I.pbFruit, pnlSkin, this, I);
+            codigo.Comprar(button, pnlSkin, I.pbFruit, ref I.cliqueSkin, ref I.ponto);
         }
-
         private void SecondSkin_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            codigo.Comprar(ref I.cliqueSkin, ref I.ponto, button, I, pnlSkin, this, I);
+            codigo.Comprar(button, pnlSkin, I, ref I.segundoSkin, ref I.ponto);
         }
-
         private void pbFechar_Click(object sender, EventArgs e)
         {
             I.btnLoja.Text = "Loja";
             I.pnlLoja.Enabled = false;
             I.pnlLoja.Visible = false;
             I.pnlLoja.Location = new Point(0, 0);
-            this.Close();
             pnlSkin.Enabled = false;
             pnlSkin.Visible = false;
+            this.Hide();
         }
-
         public void SalvarBotoes()
         {
             List<string> texto = new List<string>();
