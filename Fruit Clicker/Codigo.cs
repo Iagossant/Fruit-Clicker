@@ -17,11 +17,18 @@ namespace Fruit_Clicker
             inicio = i;
             loja = lj;
         }
-        public void Comprar(Button btnSkin, Panel painel, object local, ref int up, ref int ponto)
+        public void Comprar(object objeto, Panel painel, object local, ref int up, ref int ponto)
         {
-            string Box = "pbSkin" + btnSkin.Name.Last(), Label = "lblSkin" + btnSkin.Name.Last();
-            PictureBox pbSkin = loja.Controls.Find(Box, true).FirstOrDefault() as PictureBox;
-            Label lblSkin = loja.Controls.Find(Label, true).FirstOrDefault() as Label;
+            if(objeto is Button btnSkin)
+            {
+                PictureBox pbSkin = this.Parent as PictureBox;
+                Label lblSkin = pbSkin.Controls["lblSkin" + btnSkin.Name.Last()] as Label;
+            }
+            else if (objeto is PictureBox pbSkin)
+            {
+                Button btnSkin = this.Controls["btnSkin" + pbSkin.Name.Last()] as Button;
+                Label lblSkin = this.Controls["lblSkin" + pbSkin.Name.Last()] as Label;
+            }
 
             int.TryParse(btnSkin.Text, out int preco);
             int clique = int.Parse(lblSkin.Text.Substring(1));
@@ -54,9 +61,8 @@ namespace Fruit_Clicker
         }
         public void Upgrade(Button btnUp, ref int ponto, ref int lvl, ref int Up)
         {
-            string Preco = "lblPreco" + btnUp.Name.Last(), Level = "lblLevel" + btnUp.Name.Last();
-            Label lblPreco = inicio.Controls.Find(Preco, true).FirstOrDefault() as Label;
-            Label lblLevel = inicio.Controls.Find(Level, true).FirstOrDefault() as Label;
+            Label lblPreco = this.Controls[$"lblPreco{btnUp.Name.Last()}"] as Label;
+            Label lblLevel = this.Controls["lblLevel" + btnUp.Name.Last()]as Label;
             int preco = int.Parse(lblPreco.Text);
             if (ponto >= preco)
             {
@@ -79,14 +85,12 @@ namespace Fruit_Clicker
                 pnl.Enabled = false;
                 pnl.Visible = false;
                 pnl.Location = new Point(0, 0);
+                return;
             }
-            else
-            {
-                btn.Text = "Fechar";
-                pnl.Location = new Point(255, 133);
-                pnl.Enabled = true;
-                pnl.Visible = true;
-            }
+            btn.Text = "Fechar";
+            pnl.Location = new Point(255, 133);
+            pnl.Enabled = true;
+            pnl.Visible = true;
         }
     }
 }
