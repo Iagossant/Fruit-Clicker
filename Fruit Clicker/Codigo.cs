@@ -36,10 +36,7 @@ namespace Fruit_Clicker
                         item.Text = "Selecionar";
                     }
                 }
-            }
-
-            if (btnSkin.Text == "Selecionar" || ponto >= preco)
-            {
+                
                 if (btnSkin.Text != "Selecionar")
                 {
                     ponto -= preco;
@@ -51,11 +48,9 @@ namespace Fruit_Clicker
                 btnSkin.Text = "Selecionado";
                 btnSkin.Enabled = false;
                 loja.SalvarBotoes();
+                return;
             }
-            else
-            {
-                new Aviso().ShowDialog();
-            }
+            new Aviso().ShowDialog();
         }
         public void Upgrade(Button btnUp, ref int ponto, ref int lvl, ref int Up)
         {
@@ -72,11 +67,9 @@ namespace Fruit_Clicker
                 lblPreco. Text = preco.ToString();
                 lblLevel.Text = $"Level {lvl}";
                 inicio.lblPonto.Text = ponto.ToString();
+                return;
             }
-            else
-            {
-                new Aviso().ShowDialog();
-            }
+            new Aviso().ShowDialog();
         }
         public void Abrir_Fechar(Panel pnl, Button btn, string btnName)
         {
