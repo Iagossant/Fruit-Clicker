@@ -47,7 +47,7 @@ namespace Fruit_Clicker
             Button btn = (Button)sender;
             string Painel = "pnl" + btn.Name.Substring(3);
             Panel pnl = this.Controls.Find(Painel, true).FirstOrDefault() as Panel;
-            codigo.Abrir_Fechar(pnl, btn, btn.Tag);
+            codigo.Abrir_Fechar(pnl, btn, btn.Tag.ToString());
         }
         private void btnUpgradeClick_Click(object sender, EventArgs e)
         {
