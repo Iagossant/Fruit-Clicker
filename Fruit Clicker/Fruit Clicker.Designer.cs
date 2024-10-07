@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Index));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.pnlUp = new System.Windows.Forms.Panel();
+            this.btnUpgrade2 = new System.Windows.Forms.Button();
+            this.lblLevel2 = new System.Windows.Forms.Label();
+            this.lblPreco2 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnUpgrade1 = new System.Windows.Forms.Button();
             this.lblLevel1 = new System.Windows.Forms.Label();
             this.lblPreco1 = new System.Windows.Forms.Label();
@@ -45,18 +49,14 @@
             this.pnlLoja = new System.Windows.Forms.Panel();
             this.btnBackground = new System.Windows.Forms.Button();
             this.btnSkin = new System.Windows.Forms.Button();
-            this.btnUpgrade2 = new System.Windows.Forms.Button();
-            this.lblLevel2 = new System.Windows.Forms.Label();
-            this.lblPreco2 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pnlUp.SuspendLayout();
+            this.btnUpgrade2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.btnUpgrade1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).BeginInit();
             this.pnlLoja.SuspendLayout();
-            this.btnUpgrade2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
@@ -75,6 +75,55 @@
             this.pnlUp.Size = new System.Drawing.Size(257, 115);
             this.pnlUp.TabIndex = 1;
             this.pnlUp.Visible = false;
+            // 
+            // btnUpgrade2
+            // 
+            this.btnUpgrade2.Controls.Add(this.lblLevel2);
+            this.btnUpgrade2.Controls.Add(this.lblPreco2);
+            this.btnUpgrade2.Controls.Add(this.pictureBox3);
+            this.btnUpgrade2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpgrade2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpgrade2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpgrade2.Location = new System.Drawing.Point(24, 60);
+            this.btnUpgrade2.Name = "btnUpgrade2";
+            this.btnUpgrade2.Size = new System.Drawing.Size(208, 51);
+            this.btnUpgrade2.TabIndex = 1;
+            this.btnUpgrade2.Text = "+1 POR SEGUNDO";
+            this.btnUpgrade2.UseVisualStyleBackColor = true;
+            this.btnUpgrade2.Click += new System.EventHandler(this.btnUpgradeTimer_Click);
+            // 
+            // lblLevel2
+            // 
+            this.lblLevel2.AutoSize = true;
+            this.lblLevel2.BackColor = System.Drawing.Color.Transparent;
+            this.lblLevel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLevel2.Location = new System.Drawing.Point(4, 3);
+            this.lblLevel2.Name = "lblLevel2";
+            this.lblLevel2.Size = new System.Drawing.Size(49, 13);
+            this.lblLevel2.TabIndex = 2;
+            this.lblLevel2.Text = "Level 1";
+            // 
+            // lblPreco2
+            // 
+            this.lblPreco2.AutoSize = true;
+            this.lblPreco2.BackColor = System.Drawing.Color.Transparent;
+            this.lblPreco2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPreco2.Location = new System.Drawing.Point(30, 33);
+            this.lblPreco2.Name = "lblPreco2";
+            this.lblPreco2.Size = new System.Drawing.Size(21, 13);
+            this.lblPreco2.TabIndex = 1;
+            this.lblPreco2.Text = "20";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::Fruit_Clicker.Properties.Resources.Pontos;
+            this.pictureBox3.Location = new System.Drawing.Point(8, 26);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 8;
+            this.pictureBox3.TabStop = false;
             // 
             // btnUpgrade1
             // 
@@ -146,6 +195,7 @@
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(75, 32);
             this.btnUp.TabIndex = 3;
+            this.btnUp.Tag = "Upgrade";
             this.btnUp.Text = "Upgrade";
             this.btnUp.UseVisualStyleBackColor = false;
             this.btnUp.Click += new System.EventHandler(this.Interface_Click);
@@ -160,6 +210,7 @@
             this.btnLoja.Name = "btnLoja";
             this.btnLoja.Size = new System.Drawing.Size(75, 32);
             this.btnLoja.TabIndex = 4;
+            this.btnLoja.Tag = "Loja";
             this.btnLoja.Text = "Loja";
             this.btnLoja.UseVisualStyleBackColor = false;
             this.btnLoja.Click += new System.EventHandler(this.Interface_Click);
@@ -174,6 +225,7 @@
             this.btnConquista.Name = "btnConquista";
             this.btnConquista.Size = new System.Drawing.Size(86, 32);
             this.btnConquista.TabIndex = 5;
+            this.btnConquista.Tag = "Conquistas";
             this.btnConquista.Text = "Conquistas";
             this.btnConquista.UseVisualStyleBackColor = false;
             this.btnConquista.Click += new System.EventHandler(this.Interface_Click);
@@ -240,54 +292,6 @@
             this.btnSkin.UseVisualStyleBackColor = true;
             this.btnSkin.Click += new System.EventHandler(this.btnSkin_Click);
             // 
-            // btnUpgrade2
-            // 
-            this.btnUpgrade2.Controls.Add(this.lblLevel2);
-            this.btnUpgrade2.Controls.Add(this.lblPreco2);
-            this.btnUpgrade2.Controls.Add(this.pictureBox3);
-            this.btnUpgrade2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpgrade2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpgrade2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpgrade2.Location = new System.Drawing.Point(24, 60);
-            this.btnUpgrade2.Name = "btnUpgrade2";
-            this.btnUpgrade2.Size = new System.Drawing.Size(208, 51);
-            this.btnUpgrade2.TabIndex = 1;
-            this.btnUpgrade2.Text = "+1 POR SEGUNDO";
-            this.btnUpgrade2.UseVisualStyleBackColor = true;
-            // 
-            // lblLevel2
-            // 
-            this.lblLevel2.AutoSize = true;
-            this.lblLevel2.BackColor = System.Drawing.Color.Transparent;
-            this.lblLevel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLevel2.Location = new System.Drawing.Point(4, 3);
-            this.lblLevel2.Name = "lblLevel2";
-            this.lblLevel2.Size = new System.Drawing.Size(49, 13);
-            this.lblLevel2.TabIndex = 2;
-            this.lblLevel2.Text = "Level 1";
-            // 
-            // lblPreco2
-            // 
-            this.lblPreco2.AutoSize = true;
-            this.lblPreco2.BackColor = System.Drawing.Color.Transparent;
-            this.lblPreco2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPreco2.Location = new System.Drawing.Point(30, 33);
-            this.lblPreco2.Name = "lblPreco2";
-            this.lblPreco2.Size = new System.Drawing.Size(21, 13);
-            this.lblPreco2.TabIndex = 1;
-            this.lblPreco2.Text = "20";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::Fruit_Clicker.Properties.Resources.Pontos;
-            this.pictureBox3.Location = new System.Drawing.Point(8, 26);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 8;
-            this.pictureBox3.TabStop = false;
-            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,15 +315,15 @@
             this.Text = "Fruit Clicker";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Index_FormClosed);
             this.pnlUp.ResumeLayout(false);
+            this.btnUpgrade2.ResumeLayout(false);
+            this.btnUpgrade2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.btnUpgrade1.ResumeLayout(false);
             this.btnUpgrade1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).EndInit();
             this.pnlLoja.ResumeLayout(false);
-            this.btnUpgrade2.ResumeLayout(false);
-            this.btnUpgrade2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

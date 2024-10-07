@@ -17,33 +17,28 @@ namespace Fruit_Clicker
             inicio = i;
             loja = lj;
         }
-        public void Comprar(object objeto, Panel painel, object local, ref int up, ref int ponto)
+        public void Comprar(Button btnSkin, Panel painel, object local, ref int up, ref int ponto)
         {
-            if(objeto is Button btnSkin)
-            {
-                PictureBox pbSkin = this.Parent as PictureBox;
-                Label lblSkin = pbSkin.Controls["lblSkin" + btnSkin.Name.Last()] as Label;
-            }
-            else if (objeto is PictureBox pbSkin)
-            {
-                Button btnSkin = this.Controls["btnSkin" + pbSkin.Name.Last()] as Button;
-                Label lblSkin = this.Controls["lblSkin" + pbSkin.Name.Last()] as Label;
-            }
+            PictureBox pbSkin = btnSkin.Parent as PictureBox;
+            Label lblSkin = pbSkin.Controls["lblSkin" + btnSkin.Name.Last()] as Label;
 
             int.TryParse(btnSkin.Text, out int preco);
             int clique = int.Parse(lblSkin.Text.Substring(1));
 
             if (btnSkin.Text == "Selecionar" || ponto >= preco)
             {
-                foreach (Button item in painel.Controls.OfType<Button>())
+                foreach (PictureBox box in painel.Controls.OfType<PictureBox>())
                 {
-                    if (item.Text == "Selecionado")
+                    foreach (Button item in box.Controls.OfType<Button>())
                     {
-                        item.Enabled = true;
-                        item.Text = "Selecionar";
+                        if (item.Text == "Selecionado")
+                        {
+                            item.Enabled = true;
+                            item.Text = "Selecionar";
+                        }
                     }
                 }
-                
+
                 if (btnSkin.Text != "Selecionar")
                 {
                     ponto -= preco;
@@ -61,8 +56,8 @@ namespace Fruit_Clicker
         }
         public void Upgrade(Button btnUp, ref int ponto, ref int lvl, ref int Up)
         {
-            Label lblPreco = this.Controls[$"lblPreco{btnUp.Name.Last()}"] as Label;
-            Label lblLevel = this.Controls["lblLevel" + btnUp.Name.Last()]as Label;
+            Label lblPreco = btnUp.Controls[$"lblPreco{btnUp.Name.Last()}"] as Label;
+            Label lblLevel = btnUp.Controls["lblLevel" + btnUp.Name.Last()] as Label;
             int preco = int.Parse(lblPreco.Text);
             if (ponto >= preco)
             {
@@ -70,7 +65,7 @@ namespace Fruit_Clicker
                 preco *= 2;
                 Up++;
                 lvl++;
-                lblPreco. Text = preco.ToString();
+                lblPreco.Text = preco.ToString();
                 lblLevel.Text = $"Level {lvl}";
                 inicio.lblPonto.Text = ponto.ToString();
                 return;

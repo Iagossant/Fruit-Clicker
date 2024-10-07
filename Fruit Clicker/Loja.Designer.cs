@@ -148,6 +148,7 @@
             this.btnSkin8.TabIndex = 2;
             this.btnSkin8.Text = "15000";
             this.btnSkin8.UseVisualStyleBackColor = false;
+            this.btnSkin8.Click += new System.EventHandler(this.ClickSkin_Click);
             // 
             // pictureBox15
             // 
@@ -212,6 +213,7 @@
             this.btnSkin4.TabIndex = 2;
             this.btnSkin4.Text = "5000";
             this.btnSkin4.UseVisualStyleBackColor = false;
+            this.btnSkin4.Click += new System.EventHandler(this.ClickSkin_Click);
             // 
             // pictureBox13
             // 
@@ -276,6 +278,7 @@
             this.btnSkin7.TabIndex = 2;
             this.btnSkin7.Text = "12000";
             this.btnSkin7.UseVisualStyleBackColor = false;
+            this.btnSkin7.Click += new System.EventHandler(this.ClickSkin_Click);
             // 
             // pictureBox11
             // 
@@ -340,6 +343,7 @@
             this.btnSkin3.TabIndex = 2;
             this.btnSkin3.Text = "2750";
             this.btnSkin3.UseVisualStyleBackColor = false;
+            this.btnSkin3.Click += new System.EventHandler(this.ClickSkin_Click);
             // 
             // pictureBox9
             // 
@@ -404,6 +408,7 @@
             this.btnSkin6.TabIndex = 2;
             this.btnSkin6.Text = "10000";
             this.btnSkin6.UseVisualStyleBackColor = false;
+            this.btnSkin6.Click += new System.EventHandler(this.ClickSkin_Click);
             // 
             // pictureBox7
             // 
@@ -468,6 +473,7 @@
             this.btnSkin2.TabIndex = 2;
             this.btnSkin2.Text = "1000";
             this.btnSkin2.UseVisualStyleBackColor = false;
+            this.btnSkin2.Click += new System.EventHandler(this.ClickSkin_Click);
             // 
             // pictureBox5
             // 
@@ -532,6 +538,7 @@
             this.btnSkin5.TabIndex = 2;
             this.btnSkin5.Text = "7675";
             this.btnSkin5.UseVisualStyleBackColor = false;
+            this.btnSkin5.Click += new System.EventHandler(this.ClickSkin_Click);
             // 
             // pictureBox3
             // 
